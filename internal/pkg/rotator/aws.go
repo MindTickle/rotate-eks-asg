@@ -25,7 +25,7 @@ func DescribeAutoScalingGroup(client *autoscaling.AutoScaling, name string) (*Gr
 		ids = append(ids, *i.InstanceId)
 	}
 	g := &Group{
-		launchConfigurationName: *group.LaunchConfigurationName,
+		launchConfigurationName: "",
 		instanceIds:             ids,
 	}
 	return g, nil
