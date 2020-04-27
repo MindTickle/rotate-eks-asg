@@ -1,4 +1,4 @@
-module github.com/tenjin/rotate-eks-asg
+module github.com/MindTickle/rotate-eks-asg
 
 go 1.12
 
