@@ -25,7 +25,9 @@ Example using standard AWS SDK credentials and an assumed role:
 #!/bin/bash
 set -ex
 docker run --rm -it \
-    -e CLUSTER=your-cluster-name \
+    -e PROFILE=<aws-profile> \
+    -e REGION=<cluster-region> \
+    -e CLUSTER=>cluster-name> \
     -e AUTOSCALING_GROUPS=${AUTOSCALING_GROUP:?} \
     -v "$HOME/.aws:/.aws"
     rotate-eks-asg:latest
