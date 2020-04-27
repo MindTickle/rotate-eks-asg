@@ -46,7 +46,7 @@ for nodegroup in $nodegroups; do
     -e PROFILE=$profile \
     -e REGION=$region \
     -e CLUSTER=$cluster \
-    -e AUTOSCALING_GROUPS=${nodegroup} \
+    -e AUTOSCALING_GROUPS=$nodegroup \
     -v "$HOME/.aws:/.aws" \
     191195949309.dkr.ecr.ap-southeast-1.amazonaws.com/devops/rotate-eks-asg:latest
 done;
