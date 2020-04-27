@@ -1,0 +1,52 @@
+#!/bin/bash
+
+help=false
+profile=default
+region=ap-southeast-1
+for i in "$@"
+do
+  case $i in
+    --region=*)
+      region="${i#*=}"
+      shift # past argument=value
+    ;;
+    --cluster=*)
+      cluster="${i#*=}"
+      shift # past argument=value
+    ;;
+    --profile=*)
+      profile="${i#*=}"
+      shift # past argument=value
+    ;;
+    --help|help)
+      help="true"
+      shift # past argument=value
+    ;;
+    *)
+      # ignore
+      shift # past argument=value
+    ;;
+  esac
+done
+
+if [[ "$help" == "true" ]] || [ -z "$cluster" ]
+then
+    echo "--region = region of aws cluster (Optional Field, default ap-southeast-1)"
+    echo "--cluster = name of aws cluster (Required Field)"
+    echo "--profile = aws profile (Optional Field, default default)"
+    exit 0
+fi
+
+docker pull 191195949309.dkr.ecr.ap-southeast-1.amazonaws.com/devops/rotate-eks-asg:latest
+
+nodegroups=`aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[?contains(Tags[?Key=='alpha.eksctl.io/cluster-name'].Value, '$cluster')].[AutoScalingGroupName]" --output text`
+
+for nodegroup in $nodegroups; do
+  docker run --rm -it \
+    -e PROFILE=$profile \
+    -e REGION=$region \
+    -e CLUSTER=$cluster \
+    -e AUTOSCALING_GROUPS=${nodegroup} \
+    -v "$HOME/.aws:/.aws" \
+    191195949309.dkr.ecr.ap-southeast-1.amazonaws.com/devops/rotate-eks-asg:latest
+done;

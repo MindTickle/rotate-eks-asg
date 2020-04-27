@@ -32,3 +32,13 @@ docker run --rm -it \
     -v "$HOME/.aws:/.aws"
     rotate-eks-asg:latest
 ```
+
+## Usage with kubectl plugin
+
+You can run this tool for all nodegroups of your cluster.
+
+```bash
+sudo chmod +x ./kubectl-plugin/rotate_nodes
+sudo mv ./kubectl-foo /usr/local/bin
+kubectl rotate_nodes --cluster <cluster-name>
+```
