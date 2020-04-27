@@ -35,10 +35,4 @@ docker run --rm -it \
 
 ## Usage with kubectl plugin
 
-You can run this tool for all nodegroups of your cluster.
-
-```bash
-sudo chmod +x ./kubectl-plugin/rotate_nodes
-sudo mv ./kubectl-foo /usr/local/bin
-kubectl rotate_nodes --cluster <cluster-name>
-```
+You can run this tool for all nodegroups of your cluster by using the rotate-nodes kubectl plugin in [devops-scripts](https://github.com/MindTickle/devops-scripts)
