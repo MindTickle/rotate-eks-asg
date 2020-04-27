@@ -1,4 +1,4 @@
-module github.com/tenjin/rotate-eks-asg
+module github.com/MindTickle/rotate-eks-asg
 
 go 1.12
 
@@ -30,7 +30,7 @@ require (
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 	k8s.io/api v0.0.0-20190222213804-5cb15d344471
 	k8s.io/apimachinery v0.0.0-20190221213512-86fb29eff628
-	k8s.io/client-go v2.0.0-alpha.0.0.20190228174230-b40b2a5939e4+incompatible
+	k8s.io/client-go v0.17.0
 	k8s.io/klog v0.2.0 // indirect
 	sigs.k8s.io/yaml v1.1.0 // indirect
 )
