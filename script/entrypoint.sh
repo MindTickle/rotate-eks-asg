@@ -9,5 +9,5 @@ DEFAULT_PROFILE=default
 PROFILE=${PROFILE:-${DEFAULT_PROFILE}}
 
 export KUBECONFIG=/tmp/.kube/config
-awsudo -u PROFILE aws eks update-kubeconfig --name ${CLUSTER:?}
-awsudo -u PROFILE rotate-eks-asg ${AUTOSCALING_GROUPS:?}
+awsudo -u $PROFILE aws eks update-kubeconfig --name ${CLUSTER:?}
+awsudo -u $PROFILE rotate-eks-asg ${AUTOSCALING_GROUPS:?}
