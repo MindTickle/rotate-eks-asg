@@ -9,7 +9,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /rotate-eks-insta
 
 FROM python:3-alpine
 RUN apk add --no-cache git
-RUN pip install -q git+https://github.com/MindTickle/awsudo.git
+RUN pip install awscli --upgrade
 
 # https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
 ARG AWSAUTHENTICATOR_URL=https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator
