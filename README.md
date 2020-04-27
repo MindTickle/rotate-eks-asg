@@ -25,10 +25,13 @@ Example using standard AWS SDK credentials and an assumed role:
 #!/bin/bash
 set -ex
 docker run --rm -it \
-    -e ACCESS_KEY_ID=${ACCESS_KEY_ID:?}
-    -e SECRET_ACCESS_KEY=${SECRET_ACCESS_KEY:?}
-    -e ROLE_ARN=${ROLE_ARN:?}
-    -e CLUSTER=your-cluster-name \
-    -e AUTOSCALING_GROUPS=${AUTOSCALING_GROUP:?} \
+    -e PROFILE=<aws-profile> \
+    -e CLUSTER=<cluster-name> \
+    -e AUTOSCALING_GROUPS=<asg-name> \
+    -v "$HOME/.aws:/.aws" \
     rotate-eks-asg:latest
 ```
+
+## Usage with kubectl plugin
+
+You can run this tool for all nodegroups of your cluster by using the rotate-nodes kubectl plugin in [devops-scripts](https://github.com/MindTickle/devops-scripts)

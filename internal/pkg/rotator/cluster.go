@@ -14,7 +14,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"github.com/tenjin/rotate-eks-asg/internal/pkg/cmd"
+	"github.com/MindTickle/rotate-eks-asg/internal/pkg/cmd"
 )
 
 const (

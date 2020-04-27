@@ -7,7 +7,7 @@ import (
 	"github.com/complex64/go-utils/pkg/ctxutil"
 	"gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/tenjin/rotate-eks-asg/internal/pkg/rotator"
+	"github.com/MindTickle/rotate-eks-asg/internal/pkg/rotator"
 )
 
 var (
