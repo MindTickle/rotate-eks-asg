@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	DefaultKubeConfigPath = "/tmp/.kube/config"
+	DefaultKubeConfigPath = "/root/.kube/config"
 )
 
 var (
