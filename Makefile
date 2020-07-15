@@ -11,5 +11,5 @@ install:
 docker_build:
 	docker build -t 191195949309.dkr.ecr.ap-southeast-1.amazonaws.com/devops/rotate-eks-asg:latest .
 docker_push:
-	aws ecr get-login --no-include-email --region ap-southeast-1 | sh -
+	aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 191195949309.dkr.ecr.ap-southeast-1.amazonaws.com
 	docker push 191195949309.dkr.ecr.ap-southeast-1.amazonaws.com/devops/rotate-eks-asg:latest

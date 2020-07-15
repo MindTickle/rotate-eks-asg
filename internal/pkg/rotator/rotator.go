@@ -3,7 +3,7 @@ package rotator
 import (
 	"context"
 	"log"
-
+    "strings"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/autoscaling"
 	"github.com/aws/aws-sdk-go/service/ec2"
@@ -75,6 +75,9 @@ func RotateInstance(
 ) error {
 	name, err := GetNodeNameByInstanceID(ctx, k8s, instanceId)
 	if err != nil {
+	    if err := strings.Contains(err.Error(), "not part of cluster"); err {
+	        return nil
+	    }
 		return err
 	}
 	if err := CordonNodeByName(ctx, name); err != nil {
